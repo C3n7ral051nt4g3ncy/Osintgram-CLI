@@ -83,10 +83,7 @@ def signal_handler(sig, frame):
 
 def completer(text, state):
     options = [i for i in commands if i.startswith(text)]
-    if state < len(options):
-        return options[state]
-    else:
-        return None
+    return options[state] if state < len(options) else None
 
 
 signal.signal(signal.SIGINT, signal_handler)
@@ -109,10 +106,10 @@ api = Osintgram(args.id, args.file, args.json)
 while True:
     pc.printout("Run a command: ", pc.YELLOW)
     cmd = input()
-    if cmd == "quit" or cmd == "exit":
+    if cmd in ["quit", "exit"]:
         pc.printout("Goodbye!\n", pc.RED)
         sys.exit(0)
-    elif cmd == "list" or cmd == "help":
+    elif cmd in ["list", "help"]:
         cmdlist()
     elif cmd == "addrs":
         api.get_addrs()
