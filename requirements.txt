@@ -1,4 +1,4 @@
-requests==2.24.0
+requests==2.31.0
 requests-toolbelt==0.9.1
 geopy==1.11
 prettytable==0.7.2
